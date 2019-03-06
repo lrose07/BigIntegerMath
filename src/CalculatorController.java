@@ -9,6 +9,7 @@ class CalculatorController {
     }
 
     void doAddition(String num1, String num2) {
+        negativeResultFlag = false;
         stackTracker = new StackTracker(this, num1, num2);
         int currentNum1;
         int currentNum2;
