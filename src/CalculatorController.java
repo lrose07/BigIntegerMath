@@ -1,12 +1,11 @@
 class CalculatorController {
 
-    //private CalculatorGUI calcGUI = new CalculatorGUI(this);
     private StackTracker stackTracker;
 
     private boolean negativeResultFlag = false;
 
     CalculatorController() {
-
+        new CalculatorGUI(this);
     }
 
     void doAddition(String num1, String num2) {

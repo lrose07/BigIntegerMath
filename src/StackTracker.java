@@ -19,7 +19,6 @@ class StackTracker {
     private void fillStacks(String sa, String sb) {
         for (int i = 0; i < sa.length(); i++) {
             num1Stack.push(Character.getNumericValue(sa.charAt(i)));
-            System.out.println("something was pushed");
         }
 
         for (int i = 0; i < sb.length(); i++) {
