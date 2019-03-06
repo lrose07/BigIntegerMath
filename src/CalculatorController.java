@@ -17,8 +17,8 @@ class CalculatorController {
         int stack2Size = stackTracker.getNum2StackSize();
         int startStackMax = Integer.max(stack1Size, stack2Size);
         for (int i = 0; i < startStackMax; i++) {
-            currentNum1 = i > stack1Size + 1 ? 0 : stackTracker.getStack1Num();
-            currentNum2 = i > stack2Size + 1 ? 0 : stackTracker.getStack2Num();
+            currentNum1 = i > stack1Size - 1 ? 0 : stackTracker.getStack1Num();
+            currentNum2 = i > stack2Size - 1 ? 0 : stackTracker.getStack2Num();
 
             int totalResult = currentNum1 + currentNum2 + stackTracker.getCarry();
 
@@ -30,7 +30,6 @@ class CalculatorController {
                 stackTracker.setCarry(0);
             }
             stackTracker.pushResult(digit);
-
         }
 
         if (stackTracker.getCarry() == 1) {

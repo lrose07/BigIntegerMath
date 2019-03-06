@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.math.BigInteger;
 
 public class CalculatorGUI {
 
@@ -45,14 +46,30 @@ public class CalculatorGUI {
     private void plusClicked() {
         String num1 = number1.getText();
         String num2 = number2.getText();
-        controller.doAddition(num1, num2);
-        result.setText(controller.getResult());
+        try {
+            new BigInteger(num1);
+            new BigInteger(num2);
+            controller.doAddition(num1, num2);
+            result.setText(controller.getResult());
+        } catch (NumberFormatException e) {
+            result.setText("Please enter integers only");
+            number1.setText("");
+            number2.setText("");
+        }
     }
 
     private void minusClicked() {
         String num1 = number1.getText();
         String num2 = number2.getText();
-        controller.doSubtraction(num1, num2);
-        result.setText(controller.getResult());
+        try {
+            new BigInteger(num1);
+            new BigInteger(num2);
+            controller.doSubtraction(num1, num2);
+            result.setText(controller.getResult());
+        } catch (NumberFormatException e) {
+            result.setText("Please enter integers only");
+            number1.setText("");
+            number2.setText("");
+        }
     }
 }
