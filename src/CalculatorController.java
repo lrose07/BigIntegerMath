@@ -1,24 +1,38 @@
+/**
+ * This is a demonstration of using stacks to do
+ * large number (larger than long) addition and
+ * subtraction. This program uses BigInteger only to
+ * do input validation.
+ *
+ * @author Lauren Rose
+ * @version 7March19
+ *
+ * Radford University
+ * Department of Information Technology
+ */
 class CalculatorController {
 
     private StackTracker stackTracker;
 
-    private boolean negativeResultFlag = false;
+    private boolean negativeResultFlag;
 
     CalculatorController() {
         new CalculatorGUI(this);
+        stackTracker = new StackTracker("", "");
+        negativeResultFlag = false;
     }
 
     void doAddition(String num1, String num2) {
         negativeResultFlag = false;
-        stackTracker = new StackTracker(this, num1, num2);
+        stackTracker = new StackTracker(num1, num2);
         int currentNum1;
         int currentNum2;
         int stack1Size = stackTracker.getNum1StackSize();
         int stack2Size = stackTracker.getNum2StackSize();
         int startStackMax = Integer.max(stack1Size, stack2Size);
         for (int i = 0; i < startStackMax; i++) {
-            currentNum1 = i > stack1Size - 1 ? 0 : stackTracker.getStack1Num();
-            currentNum2 = i > stack2Size - 1 ? 0 : stackTracker.getStack2Num();
+            currentNum1 = (i > (stack1Size - 1)) ? 0 : stackTracker.getStack1Num();
+            currentNum2 = (i > (stack2Size - 1)) ? 0 : stackTracker.getStack2Num();
 
             int totalResult = currentNum1 + currentNum2 + stackTracker.getCarry();
 
@@ -38,11 +52,11 @@ class CalculatorController {
     }
 
     void doSubtraction(String num1, String num2) {
-        if (swapNeeded(num1, num2)) {
-            stackTracker = new StackTracker(this, num2, num1);
+        if (isSwapNeeded(num1, num2)) {
+            stackTracker = new StackTracker(num2, num1);
             negativeResultFlag = true;
         } else {
-            stackTracker = new StackTracker(this, num1, num2);
+            stackTracker = new StackTracker(num1, num2);
             negativeResultFlag = false;
         }
         int currentNum1;
@@ -50,10 +64,9 @@ class CalculatorController {
         int stack1Size = stackTracker.getNum1StackSize();
         int stack2Size = stackTracker.getNum2StackSize();
         int startStackMax = Integer.max(stack1Size, stack2Size);
-        System.out.println("startStackMax " + startStackMax);
         for (int i = 0; i < startStackMax; i++) {
-            currentNum1 = i > stack1Size - 1 ? 0 : stackTracker.getStack1Num();
-            currentNum2 = i > stack2Size - 1 ? 0 : stackTracker.getStack2Num();
+            currentNum1 = (i > (stack1Size - 1)) ? 0 : stackTracker.getStack1Num();
+            currentNum2 = (i > (stack2Size - 1)) ? 0 : stackTracker.getStack2Num();
 
             if (stackTracker.getCarry() == 1) {
                 currentNum1--;
@@ -72,7 +85,7 @@ class CalculatorController {
         }
     }
 
-    private boolean swapNeeded(String sa, String sb) {
+    private boolean isSwapNeeded(String sa, String sb) {
         if (sa.length() > sb.length()) {
             return false;
         } else if (sa.length() < sb.length()) {

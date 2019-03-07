@@ -2,18 +2,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.math.BigInteger;
 
-public class CalculatorGUI {
+/**
+ * This is a demonstration of using stacks to do
+ * large number (larger than long) addition and
+ * subtraction. This program uses BigInteger only to
+ * do input validation.
+ *
+ * @author Lauren Rose
+ * @version 7March19
+ *
+ * Radford University
+ * Department of Information Technology
+ */
+class CalculatorGUI {
 
-    private JTextField number1;
-    private JTextField number2;
-    private JLabel result;
+    private final JTextField number1;
+    private final JTextField number2;
+    private final JLabel result;
 
-    private final Dimension WINDOW_SIZE = new Dimension(300, 300);
 
-    private CalculatorController controller;
+    private final CalculatorController controller;
 
     CalculatorGUI(CalculatorController cont) {
         controller = cont;
+        Dimension WINDOW_SIZE = new Dimension(300, 300);
         JFrame frame = new JFrame("Big Integer Calculator");
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));

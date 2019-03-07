@@ -1,16 +1,25 @@
 import java.util.Stack;
 
+/**
+ * This is a demonstration of using stacks to do
+ * large number (larger than long) addition and
+ * subtraction. This program uses BigInteger only to
+ * do input validation.
+ *
+ * @author Lauren Rose
+ * @version 7March19
+ *
+ * Radford University
+ * Department of Information Technology
+ */
 class StackTracker {
 
-    private CalculatorController controller;
-
-    private Stack<Integer> num1Stack;
-    private Stack<Integer> num2Stack;
-    private Stack<Integer> resultStack = new Stack<>();
+    private final Stack<Integer> num1Stack;
+    private final Stack<Integer> num2Stack;
+    private final Stack<Integer> resultStack = new Stack<>();
     private Integer carry = 0;
 
-    StackTracker(CalculatorController cont, String num1, String num2) {
-        controller = cont;
+    StackTracker(String num1, String num2) {
         num1Stack = new Stack<>();
         num2Stack = new Stack<>();
         fillStacks(num1, num2);
