@@ -105,15 +105,14 @@ class CalculatorController {
     }
 
     String getResult() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         int size = stackTracker.getResultStackSize();
-        for (int i = 0; i < size; i++) {
-            result = result + stackTracker.getResultNum().toString();
-        }
-
         if (negativeResultFlag) {
-            result = "-" + result;
+            result.append("-");
         }
-        return result;
+        for (int i = 0; i < size; i++) {
+            result.append(stackTracker.getResultNum());
+        }
+        return result.toString();
     }
 }
